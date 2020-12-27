@@ -1,0 +1,523 @@
+package com.sample
+import javax.swing.JOptionPane
+import javax.swing.JFrame
+import org.kie.api.runtime.KieRuntime
+import javax.swing.JRadioButton
+import javax.swing.JPanel
+global JFrame frame
+global javax.swing.JTextArea textArea
+import java.util.ArrayList
+import java.util.List
+import java.util.Arrays;
+import java.util.ArrayList
+import javax.swing.JLabel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import com.sample.Odpowiedz;
+
+
+
+//--RULES--
+rule "Are you in Scotland?"
+    when
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you in Scotland?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you in Scotland? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you in Scotland?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Brew Dog");
+end
+
+
+rule "Are you in Scotland? - No"
+    when
+    Odpowiedz(pytanie == "Are you in Scotland?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Do you sleep in a double", warianty);
+    insert (odpowiedz);
+end
+
+rule "Do you sleep in a double - Yes"
+    when
+    Odpowiedz(pytanie == "Do you sleep in a double" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Country club");
+end
+
+
+rule "Do you sleep in a double - No"
+    when
+    Odpowiedz(pytanie == "Do you sleep in a double" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you Bob or Doug McKenzie?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you Bob or Doug McKenzie? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you Bob or Doug McKenzie?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Elsinore");
+end
+
+
+rule "Are you Bob or Doug McKenzie? - No"
+    when
+    Odpowiedz(pytanie == "Are you Bob or Doug McKenzie?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Do you live in the projects?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Do you live in the projects? - Yes"
+    when
+    Odpowiedz(pytanie == "Do you live in the projects?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Steel Reserve/Colt 45");
+end
+
+
+rule "Do you live in the projects? - No"
+    when
+    Odpowiedz(pytanie == "Do you live in the projects?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you a hockey fan eh?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you a hockey fan eh? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you a hockey fan eh?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Molson/ LaBalt Blue");
+end
+
+
+rule "Are you a hockey fan eh? - No"
+    when
+    Odpowiedz(pytanie == "Are you a hockey fan eh?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Do you know how to access the Stargate?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Do you know how to access the Stargate? - Yes"
+    when
+    Odpowiedz(pytanie == "Do you know how to access the Stargate?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Reingold/Esslinger's");
+end
+
+
+rule "Do you know how to access the Stargate? - No"
+    when
+    Odpowiedz(pytanie == "Do you know how to access the Stargate?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you doing that ironic hipster thing?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you doing that ironic hipster thing? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you doing that ironic hipster thing?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Pabst Blue Ribbon");
+end
+
+
+rule "Are you doing that ironic hipster thing? - No"
+    when
+    Odpowiedz(pytanie == "Are you doing that ironic hipster thing?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you the designated driver?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you the designated driver? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you the designated driver?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Odoul's");
+end
+
+
+rule "Are you the designated driver? - No"
+    when
+    Odpowiedz(pytanie == "Are you the designated driver?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you at a tailgate or frat party?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you at a tailgate or frat party? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you at a tailgate or frat party?" && odpowiedz == "Yes")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Is your wife nagging you about the beer gut?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Is your wife nagging you about the beer gut? - Yes"
+    when
+    Odpowiedz(pytanie == "Is your wife nagging you about the beer gut?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Amstel Light/Miller Lite/Coors Light/Bud Light");
+end
+
+
+rule "Is your wife nagging you about the beer gut? - No"
+    when
+    Odpowiedz(pytanie == "Is your wife nagging you about the beer gut?" && odpowiedz == "No")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Amstel Beer/Miller High Life/Coors/Budweiser");
+end
+
+
+rule "Are you at a tailgate or frat party? - No"
+    when
+    Odpowiedz(pytanie == "Are you at a tailgate or frat party?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Is Guinness on tap?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Is Guinness on tap? - Yes"
+    when
+    Odpowiedz(pytanie == "Is Guinness on tap?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Guinness");
+end
+
+
+rule "Is Guinness on tap? - No"
+    when
+    Odpowiedz(pytanie == "Is Guinness on tap?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Is it summer?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Is it summer? - Yes"
+    when
+    Odpowiedz(pytanie == "Is it summer?" && odpowiedz == "Yes")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you paying in change?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you paying in change? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you paying in change?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Tequiza/Modelo Especial");
+end
+
+
+rule "Are you paying in change? - No"
+    when
+    Odpowiedz(pytanie == "Are you paying in change?" && odpowiedz == "No")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Corona Extra");
+end
+
+
+rule "Is it summer? - No"
+    when
+    Odpowiedz(pytanie == "Is it summer?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Can you speak fluent French, in Russian?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Can you speak fluent French, in Russian? - Yes"
+    when
+    Odpowiedz(pytanie == "Can you speak fluent French, in Russian?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Cerveza XX Dos Equis");
+end
+
+
+rule "Can you speak fluent French, in Russian? - No"
+    when
+    Odpowiedz(pytanie == "Can you speak fluent French, in Russian?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you having a dinner party?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you having a dinner party? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you having a dinner party?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Blue Moon/Samuel Adams/New Belgium/Gordon Biersch");
+end
+
+
+rule "Are you having a dinner party? - No"
+    when
+    Odpowiedz(pytanie == "Are you having a dinner party?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Did you just graduate college?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Did you just graduate college? - Yes"
+    when
+    Odpowiedz(pytanie == "Did you just graduate college?" && odpowiedz == "Yes")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "...but did you move back in with your parents?", warianty);
+    insert (odpowiedz);
+end
+
+rule "...but did you move back in with your parents? - Yes"
+    when
+    Odpowiedz(pytanie == "...but did you move back in with your parents?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Mickey's/Old Milwaukee/Olde English");
+end
+
+
+rule "...but did you move back in with your parents? - No"
+    when
+    Odpowiedz(pytanie == "...but did you move back in with your parents?" && odpowiedz == "No")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Heineken/Rolling Rock/Beck's");
+end
+
+
+rule "Did you just graduate college? - No"
+    when
+    Odpowiedz(pytanie == "Did you just graduate college?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you a Parrothead?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you a Parrothead? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you a Parrothead?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Landshark");
+end
+
+
+rule "Are you a Parrothead? - No"
+    when
+    Odpowiedz(pytanie == "Are you a Parrothead?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you trying to seem worldly?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you trying to seem worldly? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you trying to seem worldly?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Foster's/ RedStripe/Carlsberg");
+end
+
+
+rule "Are you trying to seem worldly? - No"
+    when
+    Odpowiedz(pytanie == "Are you trying to seem worldly?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Did you bring in a reusable grocery bag?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Did you bring in a reusable grocery bag? - Yes"
+    when
+    Odpowiedz(pytanie == "Did you bring in a reusable grocery bag?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Red Hook/Sierra Nevada/Harp Lager/Newcastle Brown/Stella Artois");
+end
+
+
+rule "Did you bring in a reusable grocery bag? - No"
+    when
+    Odpowiedz(pytanie == "Did you bring in a reusable grocery bag?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Are you drunk?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Are you drunk? - Yes"
+    when
+    Odpowiedz(pytanie == "Are you drunk?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Moosehead/Tecate");
+end
+
+
+rule "Are you drunk? - No"
+    when
+    Odpowiedz(pytanie == "Are you drunk?" && odpowiedz == "No")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "Do you trully love beer?", warianty);
+    insert (odpowiedz);
+end
+
+rule "Do you trully love beer? - Yes"
+    when
+    Odpowiedz(pytanie == "Do you trully love beer?" && odpowiedz == "Yes")
+    then
+    ArrayList<String> warianty = new ArrayList<>();
+    warianty.add("Yes");
+    warianty.add("No");
+    Odpowiedz odpowiedz = zapytaj(frame, kcontext.getKieRuntime(), "...500$ love?", warianty);
+    insert (odpowiedz);
+end
+
+rule "...500$ love? - Yes"
+    when
+    Odpowiedz(pytanie == "...500$ love?" && odpowiedz == "Yes")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "<Some Expensive Beer>");
+end
+
+
+rule "...500$ love? - No"
+    when
+    Odpowiedz(pytanie == "...500$ love?" && odpowiedz == "No")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Alaskan Amber/Ale Asylum/Cantillon/Stone Brewing/Full Sail/Hair Dog/Clipper City/Double Diamond/DogfishHead");
+end
+
+
+rule "Do you trully love beer? - No"
+    when
+    Odpowiedz(pytanie == "Do you trully love beer?" && odpowiedz == "No")
+    then
+    recommend(frame, kcontext.getKieRuntime(), "Bass/Michelob Ultra");
+end
+
+//---END RULES---
+
+function void recommend(JFrame frame, KieRuntime krt, String polecane) {
+    final JPanel panel = new JPanel();
+    String text = polecane;
+    panel.add(new JLabel(text));
+    JOptionPane.showMessageDialog(frame, panel);
+}
+
+function Odpowiedz zapytaj(JFrame frame, KieRuntime krt, String trescPytania, ArrayList odpowiedzi) {
+
+    class Listener implements ItemListener {
+        private Odpowiedz answ;
+        private String chosen;
+        public Listener(Odpowiedz odp, String wybrana) {
+            this.answ = odp;
+            this.chosen = wybrana;
+        }
+
+        @Override
+        public void itemStateChanged(ItemEvent event) {
+            if (event.getStateChange() == ItemEvent.SELECTED)
+                answ.setOdpowiedz(chosen);
+        }
+    }
+    
+    Odpowiedz odpowiedz = new Odpowiedz(trescPytania, (String) odpowiedzi.get(0));
+
+    final JPanel panel = new JPanel(new GridLayout(0, 1));
+    panel.add(new JLabel(trescPytania));
+
+    ArrayList < JRadioButton > listaButtonow = new ArrayList < > ();
+
+    for (int i = 0; i < odpowiedzi.size(); i++) {
+        String text = (String) odpowiedzi.get(i);
+        JRadioButton nowy = new JRadioButton(text);
+        Listener newListener = new Listener(odpowiedz, text);
+        nowy.addItemListener(newListener);
+        listaButtonow.add(nowy);
+    }
+
+    listaButtonow.get(0).setSelected(true);
+    odpowiedz.setOdpowiedz((String) odpowiedzi.get(0));
+
+    ButtonGroup group = new ButtonGroup();
+    for (int i = 0; i < listaButtonow.size(); i++) {
+        group.add(listaButtonow.get(i));
+        panel.add(listaButtonow.get(i));
+    }
+    
+    Object[] options = {
+        "Proceed"
+    };
+    
+    if (JOptionPane.showConfirmDialog(frame, panel, "Question", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE) < 0)
+        odpowiedz.setOdpowiedz("Close");
+
+    return odpowiedz;
+}
